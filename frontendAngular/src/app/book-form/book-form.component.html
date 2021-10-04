@@ -1,0 +1,39 @@
+<h1>Libro nuevo</h1>
+<button [routerLink]="'/list-books'" class="btn btn-primary">Regresar al listado de libros</button>
+<hr>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
+
+    <div class="form-group">
+        <label>Titulo</label>
+        <input type="text" class="form-control" formControlName="title" [ngClass]="{'is-invalid':bookForm.get('title')?.hasError('required')}" />
+    </div>
+
+    <div class="form-group">
+        <label>Autor</label>
+        <input type="text" class="form-control" formControlName="author" [ngClass]="{'is-invalid':bookForm.get('author')?.hasError('required')}" />
+    </div>
+
+    <div class="form-group">
+        <label>Genero</label>
+        <input type="text" class="form-control" formControlName="genre" [ngClass]="{'is-invalid':bookForm.get('genre')?.hasError('required')}" />
+    </div>
+
+    <div class="form-group">
+        <label>Año</label>
+        <input type="number" class="form-control" formControlName="year" [ngClass]="{'is-invalid':bookForm.get('year')?.hasError('required')}" />
+    </div>
+
+    <div class="form-group">
+        <label>Portada</label>
+        <input type="text" placeholder="Link de la imagen" class="form-control" formControlName="cover" [ngClass]="{'is-invalid':bookForm.get('cover')?.hasError('required')}" />
+    </div>
+
+    <div class="form-group">
+        <label>Sinopsis</label>
+        <textarea  cols="30" rows="4" class="form-control" formControlName="synopsis" [ngClass] ="{ 'is-invalid':bookForm.get('synopsis')?.hasError('required')}" ></textarea>
+   </div>
+    <br>
+    <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid" >Guardar Libro</button>
+
+
+</form>

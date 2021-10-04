@@ -1,3 +1,25 @@
 <h1>DETALLE DEL LIBRO</h1>
+<button [routerLink]="'/list-books'" class="btn btn-primary">Regresar al listado de libros</button>
 <hr>
-<button [routerLink]="'/list-books'">Ir al listado</button>
+<div class="row" *ngIf="book$ | async ; let Book">
+    <div class="col-4">
+        <img [src]="Book.cover" alt="Imagen Portada" class="img-fluid">
+    </div>
+    <div class="col-8">
+        <h2>{{Book.title}} ({{Book.year}})</h2>
+
+        <div class="row">
+
+            <div class="col-6">
+                <h4>Autor</h4>  
+                <span>{{Book.author}}</span>
+            </div>
+            <div class="col-6">
+                <h4>Genero</h4>
+                <label>{{Book.genre}}</label>
+            </div>
+        </div>
+        <h4>Sinopsis</h4>
+        <p>{{Book.synopsis}}</p>
+    </div>
+</div>

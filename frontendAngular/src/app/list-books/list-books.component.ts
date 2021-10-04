@@ -15,8 +15,28 @@ export class ListBooksComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   this.getListBooks();
+  }
+
+  getListBooks = ()=>{
     this.books$= this.listBooksService.getAllBooks();
     console.log(this.books$);
+  }
+  deleteBook = (id: number | undefined )=>{
+
+    if(confirm("Esta seguro de eliminar el Libro")){
+
+      this.listBooksService.deleteBookById(id)
+      .then(resp =>{
+        alert("Se elimino correctamente");
+      }).catch(err =>{
+        alert("Se presento un error al eliminar");
+        console.log(err)
+      }).finally(()=>{
+        this.getListBooks();
+      })
+
+    }
   }
 
 }

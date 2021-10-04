@@ -67,7 +67,8 @@ export class BookFormComponent implements OnInit {
     console.log(form.valid);
     console.log(form.value); 
     if(form.valid){
-      const call= (this.isEdit)? this.listBookService.updateBook(this.routeParamId,form.value) :
+      const call= (this.isEdit)? 
+      this.listBookService.updateBook(this.routeParamId,form.value) :
       this.listBookService.createBook(form.value);
       call.then(resp => {
         console.log(resp);
